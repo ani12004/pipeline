@@ -1,13 +1,25 @@
-name: Do Nothing Workflow
+name: Python Calculator CI
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
-  noop:
+  run-calculator:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Do nothing
-        run: echo "¯\\_(ツ)_/¯"
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run calculator script
+        run: |
+          echo "Running Python calculator..."
+          python calculator.py
