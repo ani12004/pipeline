@@ -1,0 +1,13 @@
+name: Do Nothing Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  noop:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Do nothing
+        run: echo "¯\\_(ツ)_/¯"
