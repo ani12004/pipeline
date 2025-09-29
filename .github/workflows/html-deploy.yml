@@ -1,0 +1,25 @@
+name: HTML Page CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate-html:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check for index.html
+        run: |
+          echo "Checking for index.html..."
+          if [ -f index.html ]; then
+            echo "✅ index.html found!"
+          else
+            echo "❌ index.html is missing!"
+            exit 1
+          fi
